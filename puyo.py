@@ -3,7 +3,7 @@ import sys
 
 WIDTH = 6
 HEIGHT = 12
-COLORS = ['R', 'G', 'B', 'Y', 'P']
+COLORS = ['R', 'G', 'B', 'O', 'P']
 
 class Piece:
     def __init__(self, colors, row, col, orientation=0):

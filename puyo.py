@@ -5,22 +5,29 @@ WIDTH = 6
 HEIGHT = 12
 COLORS = ['R', 'G', 'B', 'O', 'P']
 
+# Orientation constants for better readability
+UP = 0
+RIGHT = 1
+DOWN = 2
+LEFT = 3
+
 class Piece:
-    def __init__(self, colors, row, col, orientation=0):
+    def __init__(self, colors, row, col, orientation=UP):
         self.colors = colors  # [color0, color1]; color1 is pivot
         self.row = row
         self.col = col
-        self.orientation = orientation  # 0 up, 1 right, 2 down, 3 left
+        # orientation of the piece (UP, RIGHT, DOWN, LEFT)
+        self.orientation = orientation
 
     def cells(self):
         r, c = self.row, self.col
-        if self.orientation == 0:  # color0 above pivot
+        if self.orientation == UP:  # color0 above pivot
             return [(r-1, c, self.colors[0]), (r, c, self.colors[1])]
-        elif self.orientation == 1:  # color0 to right of pivot
+        elif self.orientation == RIGHT:  # color0 to right of pivot
             return [(r, c+1, self.colors[0]), (r, c, self.colors[1])]
-        elif self.orientation == 2:  # color0 below pivot
+        elif self.orientation == DOWN:  # color0 below pivot
             return [(r+1, c, self.colors[0]), (r, c, self.colors[1])]
-        else:  # orientation == 3, color0 to left of pivot
+        else:  # orientation == LEFT, color0 to left of pivot
             return [(r, c-1, self.colors[0]), (r, c, self.colors[1])]
 
 
